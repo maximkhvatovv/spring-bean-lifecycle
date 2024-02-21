@@ -5,9 +5,9 @@ Read configs(xml-based, annotation-based, java-based)
 
 Construct BeanDefinitions
 
-Pass each BeanDefinition through BeanFactoryPostProcessors
-
 Sort BeanDefinitions
+
+Pass BeanDefinitions through each BeanFactoryPostProcessor
 
 for each BeanDefinition{
   - Invoke Bean Constructor
@@ -17,7 +17,7 @@ for each BeanDefinition{
     - Invoke Initialization Callbacks:
        1. @PostConstuct
        2. afterPropertiesSet() from InitializingBean
-       3. init-method from xml-config
+       3. init-method 
     - pass each bean through postProcessAfterInitialization() of each BeanPostProcessor (wrapping beans in proxy)
   }
 }
@@ -28,7 +28,7 @@ On calling close() method in ConfigurableApplicationContext object:
   for each SingletonBean{
       - Invoke Destruction Callbacks:
         1. @PreDestroy
-        2. destroy from DisposableBean
-        3. destroy-method from xml-config
+        2. destroy() from DisposableBean
+        3. destroy-method 
   }
 ```
